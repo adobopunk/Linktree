@@ -1,0 +1,200 @@
+/* Force dark mode */
+body {
+	--background: #121212;
+	--foreground: #ffffff;
+
+	overflow-x: hidden;
+	--link-color: #bb86fc;
+}
+
+/* Override any other theme-related colors */
+body[data-theme='dark'] {
+	--background: #121212;
+	--foreground: #ffffff;
+	--link-color: #bb86fc;
+	/* Add other custom variables here */
+}
+
+/* Container styles */
+.links-container {
+	max-width: 600px;
+	margin: 2rem auto;
+	/* padding: 1rem; */
+}
+
+/* Category styles */
+.category {
+	margin-bottom: 2rem;
+}
+
+.category h2 {
+	text-align: center;
+	font-size: 1.4rem;
+	color: var(--primary);
+	margin-bottom: 1rem;
+}
+
+/* Link card styles */
+.link-card {
+	background: var(--card-bg, var(--card-background-color));
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+	transition: all 0.5s ease;
+	border: 1px solid transparent;
+}
+
+.link-card:hover {
+	transform: scale(1.02);
+}
+
+/* Custom + / - icon */
+.link-card summary {
+	padding: 0.5rem;
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.link-card summary::after {
+	content: '';
+	position: absolute;
+	right: 1.5rem;
+	font-size: 1.5rem; /* Ensure both symbols have the same font size */
+	color: var(--link-color, var(--primary));
+	transition: transform 0.3s ease;
+	width: 20px; /* Set width */
+	height: 20px; /* Set height to match width */
+	display: flex; /* Use flex to center content */
+	align-items: center; /* Vertically center */
+	justify-content: center; /* Horizontally center */
+	line-height: 1; /* Remove any extra line-height that could affect centering */
+}
+
+/* Change to - when expanded */
+.link-card[open] summary::after {
+	content: '';
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+
+/* Hide the indicator if there's no expandable content */
+.link-card:not(:has(p)) summary::after {
+	display: none;
+}
+
+.link-card[open] summary {
+	margin-bottom: 0;
+}
+
+.link-card summary:hover {
+	background: var(--card-bg, var(--card-sectionning-background-color));
+	opacity: 0.8;
+	border-radius: 1rem;
+}
+
+.link-card[open] {
+	border-color: var(--link-color, var(--primary));
+}
+
+/* Link styles */
+.link-card a {
+	height: auto;
+	width: auto;
+	font-size: 1.5rem;
+	color: var(--link-color, var(--primary));
+	text-decoration: none;
+	display: inline-block;
+	margin-right: 2rem;
+	display: flex;
+	align-items: flex-start;
+	padding: 1rem;
+	border-radius: 8px;
+	transition: transform 0.3s ease;
+}
+
+/* Description styles with animation */
+.link-card p {
+	padding: 0;
+	margin: 0;
+	font-size: 0.9rem;
+	color: var(--muted-color);
+	/* height: 0; */
+	overflow: hidden;
+	transition: max-height 1s ease; /* Transition for max-height only */
+	padding: 0 1rem; /* Only side padding for the collapsed state */
+}
+
+.link-card[open] p {
+	max-height: 500px; /* Adjust this based on your content height */
+	padding: 1rem; /* Add top and bottom padding in the expanded state */
+	transition: max-height 1s ease;
+}
+
+/* Important link animation */
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.02);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* On hover */
+a:hover {
+	color: white; /* Change text color if needed */
+}
+
+a svg {
+	width: 24px;
+	margin-right: 12px;
+	vertical-align: bottom; /* Center the SVG vertically */
+}
+
+h1 {
+	text-align: center;
+}
+.links-container {
+	border-radius: 30px;
+	/* padding-block: 2rem; */
+	padding-inline: 2rem;
+}
+
+/* Make sure the video fills the screen */
+#background-video {
+	position: fixed; /* Fixed so it stays in place when you scroll */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Ensure it covers the screen without distorting */
+	z-index: -1; /* Keep the video behind other content */
+}
+
+/* Content styling */
+.content {
+	position: relative; /* Make sure the content is above the video */
+	z-index: 1;
+	color: white; /* Adjust text color for readability */
+	padding: 20px;
+	text-align: center;
+}
+
+article {
+	position: relative;
+	background: rgba(6, 18, 29, 0.535);
+	border-radius: 10px;
+	backdrop-filter: blur(120px); /* Apply blur effect to the background */
+	-webkit-backdrop-filter: blur(
+		120px
+	); /* Safari support for backdrop-filter */
+	padding: 2rem;
+	color: white; /* Text color for better contrast */
+	box-shadow: 0 4px 40px rgba(0, 0, 0, 0.857); /* Optional shadow to make it stand out */
+}

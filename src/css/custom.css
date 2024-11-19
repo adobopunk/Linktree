@@ -121,7 +121,7 @@ body[data-theme='dark'] {
 	font-size: 0.9rem;
 	color: var(--muted-color);
 	/* height: 0; */
-	overflow: hidden;
+	/* overflow: hidden; */
 	transition: max-height 1s ease; /* Transition for max-height only */
 	padding: 0 1rem; /* Only side padding for the collapsed state */
 }
@@ -175,6 +175,20 @@ h1 {
 	height: 100%;
 	object-fit: cover; /* Ensure it covers the screen without distorting */
 	z-index: -1; /* Keep the video behind other content */
+
+	@media (max-width: 768px) {
+		display: none; /* Hides the background video on small screens */
+	}
+}
+
+#video-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+	z-index: 0; /* Ensure it's on top of the video */
 }
 
 /* Content styling */
@@ -197,4 +211,7 @@ article {
 	padding: 2rem;
 	color: white; /* Text color for better contrast */
 	box-shadow: 0 4px 40px rgba(0, 0, 0, 0.857); /* Optional shadow to make it stand out */
+}
+.sub {
+	text-align: center;
 }
